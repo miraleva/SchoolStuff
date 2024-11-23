@@ -1,6 +1,6 @@
 package EcommerceSim;
 
-public class Payment {
+public abstract class Payment {
     private double total;
 
     public Payment(double total){

@@ -48,4 +48,8 @@ public class Product {
     public void showProductInfo(){
         System.out.println("ID:" +itemID + "Name:" + name + "Price:" + price + "Stock:"+ stock);
     }
+
+    public void reduceStock(){
+        this.stock -=1; 
+    }
 }
