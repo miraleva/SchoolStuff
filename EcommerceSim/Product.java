@@ -4,15 +4,16 @@ public class Product {
     private String name;
     private double price;
     private int itemID;
-    private int stock; 
+    private int stock;
 
-    public Product(String name, double price,int itemID, int stock){
-        this.name=name;
-        this.price=price;
-        this.itemID=itemID;
-        this.stock=stock;
+    public Product(String name, double price, int itemID, int stock) {
+        this.name = name;
+        this.price = price;
+        this.itemID = itemID;
+        this.stock = stock;
 
     }
+
     public String getName() {
         return name;
     }
@@ -45,11 +46,15 @@ public class Product {
         this.itemID = itemID;
     }
 
-    public void showProductInfo(){
-        System.out.println("ID:" +itemID + "Name:" + name + "Price:" + price + "Stock:"+ stock);
+    public void showProductInfo() {
+        System.out.println("ID:" + itemID + "Name:" + name + "Price:" + price + "Stock:" + stock);
     }
 
-    public void reduceStock(){
-        this.stock -=1; 
+    public void reduceStock() {
+        this.stock -= 1;
+    }
+
+    public void increaseStock() {
+        this.stock += 1;
     }
 }
