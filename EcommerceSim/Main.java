@@ -30,5 +30,4 @@ public class Main {
     }
 }
 
-// javac .\EcommerceSim\Main.java
-// java EcommerceSim.Main
+
