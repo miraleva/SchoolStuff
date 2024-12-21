@@ -27,6 +27,8 @@ public class Main {
         myBasket.removeProduct(product5);
         myBasket.removeProduct(product5);
 
+       
+
     }
 }
 
