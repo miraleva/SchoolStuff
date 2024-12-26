@@ -1,9 +1,7 @@
 package ContactBstHw;
 
-
     public class Tree {
          Node root = null;
-
 
         public void add(String name, String phone){
             Node tempNode= new Node(name, phone);
@@ -54,6 +52,7 @@ package ContactBstHw;
             return "Bu isim yok.";
 
         }
+
         public void inOrder(Node cnode){
             if (cnode!=null){
                 inOrder(cnode.left);
@@ -66,8 +65,6 @@ package ContactBstHw;
         public void show(Node cnode){
             inOrder(cnode);
         }
-
-
 
         public void delete(String name) {
 
@@ -92,8 +89,7 @@ package ContactBstHw;
             if (cNode == null) {
                 return; 
             }
-    
-         
+
             if (cNode.left == null && cNode.right == null) {
                 if (pNode == null) {
                     this.root = null; 
@@ -123,10 +119,8 @@ package ContactBstHw;
                     successorParent = successor;
                     successor = successor.left;
                 }
-    
                 
                 cNode.name = successor.name;
-    
                 
                 if (successorParent.left == successor) {
                     successorParent.left = successor.right;
@@ -137,7 +131,6 @@ package ContactBstHw;
             }
     
         }
-
 
 }
 class Node{
