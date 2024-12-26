@@ -1,3 +1,4 @@
+package ContactBstHw;
 
 
     public class Tree {
@@ -50,8 +51,47 @@
                         return cNode.phone;
                     }
                 } 
-            return "yok.";
+            return "Bu isim yok.";
 
+        }
+
+
+        //DELETE METHODU TESTTE İŞE YARAMIYOOO AAAAAA
+        public Node delete(Node node, String name){
+            if(node==null){
+                return null; 
+            }
+            
+            if(name.compareTo(node.name)>0){
+                node.right= delete(node.right, name);
+                
+            }
+            else if (name.compareTo(node.name)<0){
+                node.left= delete(node.left, name);
+            }
+            else if (node.left==null && node.right==null){  //childlerın ikiside nullsa
+                return null;
+            }
+            else if (node.left==null){     //birinden biri
+                return node.right;
+            }
+            else if (node.right==null){
+                return node.left;
+            }
+            return node;
+        }
+
+        public void inOrder(Node cnode){
+            if (cnode!=null){
+                inOrder(cnode.left);
+                System.out.println(cnode.name + " " + cnode.phone);
+                inOrder(cnode.right);
+            }
+
+        }
+
+        public void show(Node cnode){
+            inOrder(cnode);
         }
 
         public static void main(String[] args) {
@@ -59,10 +99,8 @@
             testTree.add("Mahmet", "123");
             testTree.add("Ahmet", "127");
             testTree.add("Zahmet", "124");
-           
-                  
             
-
+          
             
             System.out.println(testTree.root.name);
             System.out.println(testTree.root.left.name);
@@ -72,11 +110,18 @@
             System.out.println( testTree.search("Zahmet"));
             System.out.println( testTree.search("Cahmet"));
             
-            testTree.add("Mahmet", "321");
+            testTree.add("Kahmet", "321");
             System.out.println(testTree.root.phone);
+            
+            testTree.show(testTree.root);
 
+            testTree.root = testTree.delete(testTree.root, "Mahmet");
+
+            System.out.println( testTree.search("Mahmet"));
+
+    
+           
         }
-
 
 
 }
