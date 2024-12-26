@@ -54,37 +54,10 @@ package ContactBstHw;
             return "Bu isim yok.";
 
         }
-
-
-        //DELETE METHODU TESTTE İŞE YARAMIYOOO AAAAAA
-        public Node delete(Node node, String name){
-            if(node==null){
-                return null; 
-            }
-            
-            if(name.compareTo(node.name)>0){
-                node.right= delete(node.right, name);
-                
-            }
-            else if (name.compareTo(node.name)<0){
-                node.left= delete(node.left, name);
-            }
-            else if (node.left==null && node.right==null){  //childlerın ikiside nullsa
-                return null;
-            }
-            else if (node.left==null){     //birinden biri
-                return node.right;
-            }
-            else if (node.right==null){
-                return node.left;
-            }
-            return node;
-        }
-
         public void inOrder(Node cnode){
             if (cnode!=null){
                 inOrder(cnode.left);
-                System.out.println(cnode.name + " " + cnode.phone);
+                System.out.println(cnode.name + ": " + cnode.phone);
                 inOrder(cnode.right);
             }
 
@@ -94,33 +67,75 @@ package ContactBstHw;
             inOrder(cnode);
         }
 
-        public static void main(String[] args) {
-            Tree testTree = new Tree();
-            testTree.add("Mahmet", "123");
-            testTree.add("Ahmet", "127");
-            testTree.add("Zahmet", "124");
-            
-          
-            
-            System.out.println(testTree.root.name);
-            System.out.println(testTree.root.left.name);
-            System.out.println(testTree.root.right.name);
-            
-            
-            System.out.println( testTree.search("Zahmet"));
-            System.out.println( testTree.search("Cahmet"));
-            
-            testTree.add("Kahmet", "321");
-            System.out.println(testTree.root.phone);
-            
-            testTree.show(testTree.root);
 
-            testTree.root = testTree.delete(testTree.root, "Mahmet");
 
-            System.out.println( testTree.search("Mahmet"));
+        public void delete(String name) {
 
+            Node pNode = null; 
+                               
+            Node cNode = this.root;
+            while (cNode != null) {
+                if (cNode.name.compareTo(name) < 0) {
     
-           
+                    pNode = cNode;
+                    cNode = cNode.left;
+    
+                } else if (cNode.name.compareTo(name) > 0) {
+    
+                    pNode = cNode;
+                    cNode = cNode.right;
+    
+                } else {
+                    break; 
+                }
+            }
+            if (cNode == null) {
+                return; 
+            }
+    
+         
+            if (cNode.left == null && cNode.right == null) {
+                if (pNode == null) {
+                    this.root = null; 
+                } else if (pNode.left == cNode) {
+                    pNode.left = null;
+                } else {
+                    pNode.right = null;
+                }
+            }
+            
+            else if (cNode.left == null || cNode.right == null) {
+                Node child = (cNode.left != null) ? cNode.left : cNode.right;
+                if (pNode == null) {
+                    this.root = child; 
+                } else if (pNode.left == cNode) {
+                    pNode.left = child;
+                } else {
+                    pNode.right = child;
+                }
+            } 
+            else {
+                
+                Node successorParent = cNode;
+                Node successor = cNode.right;
+    
+                while (successor.left != null) {
+                    successorParent = successor;
+                    successor = successor.left;
+                }
+    
+                
+                cNode.name = successor.name;
+    
+                
+                if (successorParent.left == successor) {
+                    successorParent.left = successor.right;
+                } else {
+                    successorParent.right = successor.right;
+                }
+    
+            }
+    
         }
 
 
