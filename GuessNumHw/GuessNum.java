@@ -18,11 +18,15 @@ class GuessNum {
             int guess = 0;
             int c;
             boolean validInput = true;
-            boolean isEmpty = true;
-
             
-            // Girdi sadece sayılar olacak ve 'Enter' ile girişi sonlandırdık 
+
+            // Girdi sadece sayılar olacak ve 'Enter' ile girişi sonlandırdım
             while ((c = System.in.read()) != '\n') {
+               // Eğer karakter ' ' (boşluk) veya '\r' ise yoksay
+                if (c == '\r' || c == ' ') {
+                    continue;
+                }
+                // Eğer sayıysa, tahmine ekle
                 if (c >= '0' && c <= '9') {
                     guess = guess * 10 + (c - '0');
                 } else {
@@ -30,11 +34,6 @@ class GuessNum {
                 }
             }
 
-            if (isEmpty) {
-                System.out.println("Oyundan çıkılıyor.");
-                break; 
-            }
-            
             if (!validInput) {
                 System.out.println("Sadece sayı kullanın!");
                 continue;
