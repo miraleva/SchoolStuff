@@ -1,4 +1,4 @@
-
+//GuessingGame kısmı
 class GuessNum {
     int targetNumber;
     int attempts;
@@ -37,7 +37,7 @@ class GuessNum {
             }
 
             if (guess == -1) {
-                System.out.println("Oyundan çıkıyorsunuz. Hedef sayı: " + targetNumber);
+                System.out.println("Oyundan çıkıyorsun. Hedef sayı: " + targetNumber);
                 break;
             }
 
