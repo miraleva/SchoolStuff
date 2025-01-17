@@ -19,7 +19,7 @@ class GuessNum {
             int c;
             boolean validInput = true;
             
-            // Girdi sadece sayılar olacak ve 'Enter' ile girişi sonlandırdık 
+            // Girdi sadece sayılar olacak ve 'Enter' ile girişi sonlandırdım 
             while ((c = System.in.read()) != '\n') {
                 if (c >= '0' && c <= '9') {
                     guess = guess * 10 + (c - '0');
