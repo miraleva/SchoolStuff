@@ -1,5 +1,7 @@
 package QuestionTwo;
 
+//A constructor that takes the accountNumber and accountHolderName as arguments and 
+//initializes the balance to 0.0.
 public class BankAccount {
    private String accNum;   //private mı olsun public mi 
    private String accHolderNum;
