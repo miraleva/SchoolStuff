@@ -1,38 +1,47 @@
 package QuestionTwo;
 
-//A constructor that takes the accountNumber and accountHolderName as arguments and 
-//initializes the balance to 0.0.
 public class BankAccount {
-   private String accNum;   //private mı olsun public mi 
-   private String accHolderNum;
-   private double balance;
+    private String accNum;
+    private String accHolderNum;
+    private double balance;
 
-   public BankAccount(String accNum, String accHolderNum) {
-      this.accNum = accNum;
-      this.accHolderNum = accHolderNum;
-      this.balance = 0; //float mı olsun double mı karar ver 
-}
+    public BankAccount(String accNum, String accHolderNum) {
+        this.accNum = accNum;
+        this.accHolderNum = accHolderNum;
+        this.balance = 0.0;
+    }
 
-public void deposit(){
-//(double amount) 
-//Adds the given amount to the balance. Prints a confirmation message
-}
+    public double deposit(double amount) {
+        if (amount <= 0) {
+            System.out.println("Please enter a positive amount to deposit.");
+            return -1.0; // return -1.0 is used to handle invalid input cases in the background
+        }
+        balance += amount;
+        System.out.println("Deposited: " + amount);
+        return balance; // I return the updated balance if deposit was successful
+    }
 
-public void withdraw(){
-//(double amount) 
-//Subtracts the given amount from the balance if sufficient 
-//funds are available. If not, prints an "Insufficient Funds" message. 
+    public double withdraw(double amount) {
+        if (amount <= 0) {
+            System.out.println("Please enter a positive amount to withdraw.");
+            return -1.0; // This return value helps me check for invalid withdrawals in the background
+        }
+        if (amount > balance) {
+            System.out.println("Insufficient Funds");
+            return -1.0; // return -1.0 to indicate that there was not enough money
+        }
+        balance -= amount;
+        System.out.println("Withdrawn: " + amount);
+        return balance; 
+    }
 
-}
+    public double getBalance() {
+        return balance;
+    }
 
-public void getBalance(){
-//: Returns the current balance.
-}
-
-public void displayAccountInfo(){
-//Prints the account number, account holder name, and current balance
-}
-
-
-
+    public void displayAccountInfo() {
+        System.out.println("Account Number: " + accNum);
+        System.out.println("Account Holder: " + accHolderNum);
+        System.out.println("Current Balance: " + balance);
+    }
 }
