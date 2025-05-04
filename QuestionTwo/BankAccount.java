@@ -13,25 +13,25 @@ public class BankAccount {
 
     public double deposit(double amount) {
         if (amount <= 0) {
-            System.out.println("Please enter a positive amount to deposit.");
+            System.out.println("Error: Please enter a positive amount to deposit. You tried to deposit " + amount);
             return -1.0; // return -1.0 is used to handle invalid input cases in the background
         }
         balance += amount;
-        System.out.println("Deposited: " + amount);
+        System.out.println("Deposited: " + amount + " New balance is: " + balance);
         return balance; // I return the updated balance if deposit was successful
     }
 
     public double withdraw(double amount) {
         if (amount <= 0) {
-            System.out.println("Please enter a positive amount to withdraw.");
+            System.out.println("Error: Please enter a positive amount to withdraw. You tried to withdraw " + amount);
             return -1.0; // This return value helps me check for invalid withdrawals in the background
         }
         if (amount > balance) {
-            System.out.println("Insufficient Funds");
+            System.out.println("Error: Insufficient Funds");
             return -1.0; // return -1.0 to indicate that there was not enough money
         }
         balance -= amount;
-        System.out.println("Withdrawn: " + amount);
+        System.out.println("Withdrew: " + amount + " Remaining balance is: " + balance);
         return balance; 
     }
 
